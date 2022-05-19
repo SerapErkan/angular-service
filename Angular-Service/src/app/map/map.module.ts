@@ -8,6 +8,7 @@ import { CityComponent } from './city/city.component';
 import { MapComponent } from './map/map.component';
 import { PlaqueComponent } from './plaque/plaque.component';
 import { RegionComponent } from './region/region.component';
+import { MapService } from 'src/libs';
 
 
 
@@ -22,6 +23,7 @@ import { RegionComponent } from './region/region.component';
   imports: [
     CommonModule,
     MapRoutingModule,FormsModule
-  ]
+  ],
+  providers:[MapService]
 })
 export class MapModule { }
