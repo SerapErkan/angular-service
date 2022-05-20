@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from 'src/libs';
 
 @Component({
   selector: 'app-region',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./region.component.sass']
 })
 export class RegionComponent implements OnInit {
-
-  constructor() { }
+  regionsData: any = {};
+  constructor(private mapService: MapService) { }
 
   ngOnInit(): void {
+    this.regionsData = this.mapService.getCityRegions();
   }
 
 }

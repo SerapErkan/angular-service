@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MapService } from 'src/libs';
 
 @Component({
   selector: 'app-plaque',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./plaque.component.sass']
 })
 export class PlaqueComponent implements OnInit {
-
-  constructor() { }
+  
+  plaquesData:any={};
+  constructor(private mapService:MapService) { }
 
   ngOnInit(): void {
+    this.plaquesData=this.mapService.getCityPlaques();
   }
 
 }

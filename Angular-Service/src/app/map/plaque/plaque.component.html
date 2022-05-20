@@ -1,1 +1,9 @@
-<p>plaque works!</p>
+
+<div class="row">
+    <p>Plakalar</p>
+    <div class="col-md-12">
+      <ul>
+        <li *ngFor="let city of plaquesData">{{city.id}}--{{city.name}}--{{city.plaque}}</li>
+      </ul>
+    </div>
+  </div>

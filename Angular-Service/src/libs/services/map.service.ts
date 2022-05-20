@@ -80,7 +80,7 @@ export class MapService {
     }))
 
   }
-  getCityRegion() {
+  getCityRegions() {
     return this.cities.map(el => ({
       id: el.id,
       name: el.name,

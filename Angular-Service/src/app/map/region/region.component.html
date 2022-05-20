@@ -1,1 +1,9 @@
-<p>region works!</p>
+
+<div class="row">
+    <p>Bölgeler</p>
+    <div class="col-md-12">
+      <ul>
+        <li *ngFor="let city of regionsData">{{city.id}}--{{city.name}}--{{city.region}}</li>
+      </ul>
+    </div>
+  </div>
