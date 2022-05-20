@@ -1,14 +1,44 @@
 <div class="container">
+  <form  class="form-group" #cityForm="ngForm" (ngSubmit)="save(cityForm)">
+    <div class="row">
+      <div class="col-md-12" form-control>
+        <label for="id">Id</label>
+        <br>
+        <input type="number" name="id" ngModel />
+      </div>
 
-<div class="row">
-    <div class="col-md-4"> <app-city> </app-city> </div>
-    <div class="col-md-4"><app-plaque></app-plaque></div>
-    <div class="col-md-4"><app-region></app-region></div>
+      <div class="col-md-12">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" ngModel />
+      </div>
+      <div class="col-md-12">
+        <label for="region">Region</label>
+        <br>
+        <input type="text" name="region" ngModel />
+      </div>
+      <div class="col-md-12">
+        <label for="plaque">Plaque</label>
+        <br>
+        <input type="number" name="plaque" ngModel />
+      </div>
+      <div class="col-md-12">
+    <br>
+      <button type="submit">Kaydet</button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <app-city> </app-city>
+    </div>
+    <div class="col-md-4">
+      <app-plaque></app-plaque>
+    </div>
+    <div class="col-md-4">
+      <app-region></app-region>
+    </div>
+  </div>
 </div>
-
-</div>
-
-
-
-
-

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { MapService } from 'src/libs';
 
 @Component({
   selector: 'app-map',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mapService:MapService) { }
 
   ngOnInit(): void {
   }
+
+
+save(form:NgForm){
+  this.mapService.save(form.value);
+
+}
 
 }
