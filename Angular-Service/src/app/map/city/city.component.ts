@@ -7,12 +7,20 @@ import { MapService } from 'src/libs';
   styleUrls: ['./city.component.sass']
 })
 export class CityComponent implements OnInit {
-  citiesData:any={};
+  citiesData: any = {};
 
-  constructor(private mapService:MapService) { }
+  constructor(private mapService: MapService) {
+    //
+    mapService.cityNameSubject.subscribe(data => {
+      this.citiesData = data;
+    });
+
+  }
 
   ngOnInit(): void {
-    this.citiesData=this.mapService.getCityNames();
+    // this.citiesData=this.mapService.getCityNames();
+
+    this.mapService.getCityNames();
   }
 
 }

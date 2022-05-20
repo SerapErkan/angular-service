@@ -7,12 +7,17 @@ import { MapService } from 'src/libs';
   styleUrls: ['./plaque.component.sass']
 })
 export class PlaqueComponent implements OnInit {
-  
-  plaquesData:any={};
-  constructor(private mapService:MapService) { }
+
+  plaquesData: any = {};
+  constructor(private mapService: MapService) {
+
+    mapService.cityPlaquesSubject.subscribe(data => {
+      this.plaquesData = data;
+    });
+  }
 
   ngOnInit(): void {
-    this.plaquesData=this.mapService.getCityPlaques();
+    this.mapService.getCityPlaques();
   }
 
 }

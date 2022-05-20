@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 interface city {
-  id:number;
-  name:string;
-  region:string;
-  plaque:number;
+  id: number;
+  name: string;
+  region: string;
+  plaque: number;
 }
 
 
@@ -60,45 +61,64 @@ export class MapService {
   ]
 
 
-
+  public cityNameSubject = new Subject<any>();
+  public cityRegionsSubject = new Subject<any>();
+  public cityPlaquesSubject = new Subject<any>();
 
   constructor() { }
 
 
+  // getCityNames() {
+  //   return this.cities.map(el => ({
+  //     id: el.id,
+  //     name: el.name
+  //   }))
+
+  // }
+
   getCityNames() {
-    return this.cities.map(el => ({
+    const data = this.cities.map(el => ({
       id: el.id,
       name: el.name
-    }))
+    }));
+    this.cityNameSubject.next(data);
 
   }
+
   getCityPlaques() {
-    return this.cities.map(el => ({
+    const data = this.cities.map(el => ({
       id: el.id,
       name: el.name,
-      plaque:el.plaque
-    }))
+      plaque: el.plaque
 
+    }))
+    this.cityPlaquesSubject.next(data);
   }
   getCityRegions() {
-    return this.cities.map(el => ({
+    const data = this.cities.map(el => ({
       id: el.id,
       name: el.name,
-      region:el.region
+      region: el.region
     }))
+    this.cityRegionsSubject.next(data);
 
   }
-  
-  save(value:city){
-    const index=this.cities.findIndex(el=>el.id===value.id);
-    
-      if(index > -1){
-        this.cities[index]=value;
-     
-      }else{
-        this.cities.push(value);
-      }
-    
+
+  save(value: city) {
+    const index = this.cities.findIndex(el => el.id === value.id);
+
+    if (index > -1) {
+      this.cities[index] = value;
+
+    } else {
+      this.cities.push(value);
+    }
+
+
+    this.getCityNames();
+    this.getCityPlaques();
+    this.getCityRegions();
+
   }
 
 
