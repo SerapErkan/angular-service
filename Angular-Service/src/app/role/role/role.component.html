@@ -5,11 +5,18 @@
       class="form-group"
       (ngSubmit)="addNewRole(roleForm)"
     >
-      <label for="name">Name:</label>
+      <label for="name">NAME:</label>
       <input class="form-control" type="text" name="name" ngModel />
       <br />
-      <button type="submit">kaydet</button>
+      <label for="id">ID:</label>
+      <input class="form-control" type="text" name="id" ngModel />
+      <br />
+
+      <button type="submit">Kaydet</button>
+     
     </form>
+
+    <button (click)="editNewRole(roleForm)">Güncelle</button>
   </div>
 </div>
 

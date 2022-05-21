@@ -11,7 +11,7 @@ import { RoleService } from 'src/libs';
 export class RoleComponent implements OnInit {
 
   rolesData: any;
-  constructor(private RoleService: RoleService) {}
+  constructor(private RoleService: RoleService) { }
 
   ngOnInit(): void {
     this.getRoles();
@@ -23,14 +23,24 @@ export class RoleComponent implements OnInit {
     });
 
   }
-  addNewRole(roleForm:NgForm){
+  addNewRole(roleForm: NgForm) {
     this.RoleService.addRole(roleForm.value).subscribe(data => {
-     this.getRoles();
-    },errors=>{
-alert("something went wrong !!");
+      this.getRoles();
+    }, errors => {
+      alert("something went wrong !!");
     })
-  
+
   }
 
+  editNewRole(roleForm: NgForm) {
+    this.RoleService.editRole(roleForm.value).subscribe(data => {
+      this.getRoles();
+    }, errors => {
+      alert("something went wrong !!");
+    });
+  }
 
 }
+
+
+
