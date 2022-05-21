@@ -30,4 +30,8 @@ export class RoleService {
     return this.http.put<any>(this.connection + `/${role.id}`,role)
 
   }
+
+  deleteRole(role:any){
+    return this.http.delete<any>(this.connection +`/${role.id}`,role)
+  }
 }

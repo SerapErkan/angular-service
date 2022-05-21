@@ -39,6 +39,13 @@ export class RoleComponent implements OnInit {
       alert("something went wrong !!");
     });
   }
+ deleteNewRole(roleForm: NgForm) {
+    this.RoleService.deleteRole(roleForm.value).subscribe(data => {
+      this.getRoles();
+    }, errors => {
+      alert("something went wrong !!");
+    });
+  }
 
 }
 
