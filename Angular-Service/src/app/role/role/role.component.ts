@@ -1,5 +1,6 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { RoleService } from 'src/libs';
 
 @Component({
@@ -22,5 +23,14 @@ export class RoleComponent implements OnInit {
     });
 
   }
+  addNewRole(roleForm:NgForm){
+    this.RoleService.addRole(roleForm.value).subscribe(data => {
+     this.getRoles();
+    },errors=>{
+alert("something went wrong !!");
+    })
+  
+  }
+
 
 }

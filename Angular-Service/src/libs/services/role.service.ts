@@ -16,7 +16,9 @@ export class RoleService {
     //{params}
     //{search:""}
 
+  }
 
-
+  addRole(role:any){
+    return this.http.post<any>(this.connection,role)
   }
 }
