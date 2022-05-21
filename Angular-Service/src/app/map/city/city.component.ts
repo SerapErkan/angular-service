@@ -8,12 +8,19 @@ import { MapService } from 'src/libs';
 })
 export class CityComponent implements OnInit {
   citiesData: any = {};
+  citiesData$;
 
   constructor(private mapService: MapService) {
-    //
-    mapService.cityNameSubject.subscribe(data => {
-      this.citiesData = data;
-    });
+
+ //Subject
+    
+    // mapService.cityNameSubject.subscribe(data => {
+    //   this.citiesData = data;
+    // });
+
+ //BehaviorSubject
+
+this.citiesData$=mapService.cityNameDataSubject;
 
   }
 
