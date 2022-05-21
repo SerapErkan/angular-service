@@ -1,4 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { RoleService } from 'src/libs';
 
 @Component({
   selector: 'app-role',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoleComponent implements OnInit {
 
-  constructor() { }
+  rolesData: any;
+  constructor(private RoleService: RoleService) {}
 
   ngOnInit(): void {
+    this.getRoles();
+  }
+
+  getRoles() {
+    this.RoleService.getAllRoles().subscribe(data => {
+      this.rolesData = data;
+    });
+
   }
 
 }

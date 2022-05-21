@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -6,7 +6,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RoleService {
-  connection=environment.api.nextjs.role;
+  connection = environment.api.nextjs.role + "/role";
 
-  constructor(private http:HttpClientModule) { }
+  constructor(private http: HttpClient) { }
+
+  getAllRoles() {
+    // const apiUrl =this.connection +"/role" 
+    return this.http.get<any>(this.connection);
+    //{params}
+    //{search:""}
+
+
+
+  }
 }
