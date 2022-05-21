@@ -1,6 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { RoleService } from 'src/libs';
 
 @Component({
@@ -8,17 +8,22 @@ import { RoleService } from 'src/libs';
   templateUrl: './role.component.html',
   styleUrls: ['./role.component.sass']
 })
-export class RoleComponent implements OnInit {
+export class RoleComponent implements OnInit, OnDestroy {
 
   rolesData: any;
+  subs1: Subscription | undefined;
   constructor(private RoleService: RoleService) { }
 
   ngOnInit(): void {
     this.getRoles();
   }
+  ngOnDestroy(): void {
+    this.subs1?.unsubscribe();
+  }
+
 
   getRoles() {
-    this.RoleService.getAllRoles().subscribe(data => {
+    this.subs1 = this.RoleService.getAllRoles().subscribe(data => {
       this.rolesData = data;
     });
 
