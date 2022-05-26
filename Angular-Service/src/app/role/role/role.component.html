@@ -23,7 +23,7 @@
 </div>
 
 <ul>
-  <li *ngFor="let role of rolesData[0]?.data">
+  <li *ngFor="let role of  rolesData? rolesData[0]?.data : []">
     ID: {{ role._id }} - NAME :{{ role.name }}
   </li>
 </ul>

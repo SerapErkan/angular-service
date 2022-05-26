@@ -19,6 +19,13 @@ const routes: Routes = [
     import("./role/role.module").then(m=>m.RoleModule),canActivate:[AuthGuard]
     
 
+  },
+  {
+    path:"user",
+    loadChildren:()=>
+    import("./user/user.module").then(m=>m.UserModule),
+    
+
   }
 
 ];
